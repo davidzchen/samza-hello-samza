@@ -61,7 +61,7 @@ job {
           metadata_broker: "localhost:9092"
           producer_type: "sync"
           # Normally, we'd set this much higher, but we want things to look snappy in the demo.
-          batch_num_messages: 1
+          kafka_config: "batch.num.messages=1"
         }
       }
     }

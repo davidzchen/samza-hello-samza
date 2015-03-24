@@ -3,8 +3,10 @@ job {
   factory_class: "org.apache.samza.job.yarn.YarnJobFactory"
 
   # YARN config
-  yarn {
-    package_path: "file://${basedir}/target/${project.artifactId}-${pom.version}-dist.tar.gz"
+  options {
+    [YarnJobConfig] {
+      package_path: "file://${basedir}/target/${project.artifactId}-${pom.version}-dist.tar.gz"
+    }
   }
 
   # Task config
@@ -28,7 +30,7 @@ job {
     options {
       [WikipediaSystemConfig] {
         host: "irc.wikimedia.org"
-        port: "6667"
+        port: 6667
       }
     }
   }
@@ -44,7 +46,7 @@ job {
           zookeeper_connect: "localhost:2181/"
         }
         producer {
-          metadata_broker_list: localhost:9092
+          metadata_broker_list: "localhost:9092"
           producer_type: "sync"
           # Normally, we'd set this much higher, but we want things to look snappy in the demo.
           batch_num_messages: true
